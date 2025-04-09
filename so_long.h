@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tugcemirayalgan <tugcemirayalgan@studen    +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 17:06:26 by tugcemiraya       #+#    #+#             */
-/*   Updated: 2025/04/09 17:21:14 by tugcemiraya      ###   ########.fr       */
+/*   Created: 2025/04/09 23:06:05 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/09 23:06:08 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,38 +23,33 @@
 # define WRN_ARG "Wrong argument\n"
 # define WRN_MEM "Memory error\n"
 # define WRN_FILE "Wrong file name\n"
-# define WRN_MAP "Error: Map error\n"
-# define WRN_MAP_READ "Error: Map couldn't read\n"
-# define WRN_MAP_CNT "Error: Map contents error\n"
-# define WRN_MAP_OPN "Error: Map walls error\n"
-# define WRN_MAP_TRG "Error: Map target error\n"
+# define WRN_MAP "Map error\n"
+# define WRN_MAP_READ "Map couldn't read\n"
+# define WRN_MAP_CNT "Incorrect Map\n"
+# define WRN_MAP_OPN "Map walls not correct\n"
+# define WRN_MAP_TRG "Map target not correct\n"
 # define END_GAME "Congratulations! Zeytin is happy!\n"
-
-typedef struct s_textures
-{
-	void	*wall;
-	void	*player;
-	void	*floor;
-	void	*fish;
-	void	*exit;
-}	t_textures;
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	char		**map;
-	int			height;
-	int			width;
-	int			player_x;
-	int			player_y;
-	int			moves;
-	int			collectibles;
-	int			collected;
-	int			count;
-	int			exit_reached;
-	t_textures	textures;
-}	t_game;
+	void	*mlx;
+	void	*win;
+	void	*wall;
+	void	*floor;
+	void	*exit;
+	void	*fish;
+	void	*player;
+	char	**map;
+	int		width;
+	int		height;
+	int		exit_count;
+	int		player_count;
+	int		player_x;
+	int		player_y;
+	int		count;
+	int		collectibles;
+	int		moves;
+}			t_game;
 
 void	map_control(t_game *game);
 void	fill_values(t_game *game);

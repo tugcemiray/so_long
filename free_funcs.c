@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tugcemirayalgan <tugcemirayalgan@studen    +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 05:49:08 by tugcemiraya       #+#    #+#             */
-/*   Updated: 2025/04/09 17:34:41 by tugcemiraya      ###   ########.fr       */
+/*   Created: 2025/04/09 23:06:49 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/09 23:06:51 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	free_game(t_game *game)
 		free(game);
 	if (game->map)
 		free_map(game->map);
-	if (game->exit || game->wall || game->path
-		|| game->player || game->collectible)
+	if (game->exit || game->wall || game->floor
+		|| game->player || game->fish)
 		free_txt(game);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);

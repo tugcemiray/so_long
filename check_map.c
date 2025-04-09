@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tugcemirayalgan <tugcemirayalgan@studen    +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 07:59:01 by tugcemiraya       #+#    #+#             */
-/*   Updated: 2025/04/09 17:23:21 by tugcemiraya      ###   ########.fr       */
+/*   Created: 2025/04/09 23:07:08 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/09 23:07:14 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	check_map_char(t_game *game, char c)
 	else if (c == 'E')
 		game->exit_count++;
 	else if (c == 'C')
-		game->fish++;
+		game->collectibles++;
 	else if (c != '1' && c != '0')
 	{
 		free_game(game);
@@ -55,7 +55,7 @@ static void	map_contents(t_game *game, int i, int j)
 		while (++j < game->width)
 			check_map_char(game, game->map[i][j]);
 	}
-	if (game->player_count != 1 || game->exit_count != 1 || game->fish < 1)
+	if (game->player_count != 1 || game->exit_count != 1 || game->collectibles < 1)
 	{
 		free_game(game);
 		err_msg(WRN_MAP_CNT);

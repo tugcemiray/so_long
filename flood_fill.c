@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tugcemirayalgan <tugcemirayalgan@studen    +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 07:18:51 by tugcemiraya       #+#    #+#             */
-/*   Updated: 2025/04/09 17:35:12 by tugcemiraya      ###   ########.fr       */
+/*   Created: 2025/04/09 23:06:57 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/09 23:06:58 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	**copy_map(t_game *game)
 		}
 		i++;
 	}
-	copy[i] = NULL;
+	cpy[i] = NULL;
 	return (cpy);
 }
 
@@ -67,7 +67,7 @@ static void	flood_fill(t_game *game, char **map, int row, int col)
 	else if (map[row][col] == 'C')
 		game -> count++;
 	else if (map[row][col] == 'E')
-		game -> exit_reached = 1;
+		game -> exit_count = 1;
 	map[row][col] = 'F';
 	flood_fill(game, map, row - 1, col);
 	flood_fill(game, map, row + 1, col);
@@ -87,12 +87,12 @@ void	flood_fill_controller(t_game *game)
 	}
 	player_position(game);
 	flood_fill(game, copy, game->player_x, game->player_y);
-	if (game->exit_count != 0 || game->count != game->fish)
+	if (game->exit_count != 0 || game->count != game->collectibles)
 	{
 		free_map(copy);
 		free_map(game->map);
 		free(game);
 		err_msg(WRN_MAP_TRG);
 	}
-	free_map(copy, game->height);
+	free_map(copy);
 }
