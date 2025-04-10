@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 23:06:25 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:06:27 by tukaraca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 int	key_hook(int keycode, t_game	*game)
@@ -27,12 +15,12 @@ int	key_hook(int keycode, t_game	*game)
 	return (0);
 }
 
-static void	put_image(t_game	*game, void *img, int col, int row)
+static void	put_image(t_game	*game, void *img, int row, int col)
 {
-	mlx_put_image_to_window(game -> mlx, game -> win, img, col * 64, row * 64);
+	mlx_put_image_to_window(game -> mlx, game -> win, img, row * 64, col * 64);
 }
 
-static void	put_map_utils(t_game *game, int y, int x)
+static void	put_map_utils(t_game *game, int x, int y)
 {
 	char	c;
 
@@ -74,12 +62,13 @@ void	get_textures(t_game *game)
 	game -> player = mlx_xpm_file_to_image(game -> mlx,
 			"textures/player.xpm", &value, &value);
 	game -> exit = mlx_xpm_file_to_image(game -> mlx,
-			"textures/exit6.xpm", &value, &value);
+			"textures/exit.xpm", &value, &value);
 	game -> wall = mlx_xpm_file_to_image(game -> mlx,
-			"textures/wall5.xpm", &value, &value);
+			"textures/wall.xpm", &value, &value);
 	game -> fish = mlx_xpm_file_to_image(game -> mlx,
-			"textures/collectible2.xpm", &value, &value);
+			"textures/fish.xpm", &value, &value);
 	draw_map(game);
 }
+
 
 
