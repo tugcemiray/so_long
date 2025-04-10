@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:07:08 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:07:14 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:42:55 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	check_map_char(t_game *game, char c)
 
 static void	map_contents(t_game *game, int i, int j)
 {
+	i = -1;
 	while (++i < game->height)
 	{
 		j = -1;
