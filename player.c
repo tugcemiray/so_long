@@ -53,3 +53,4 @@ void	move_player(t_game *game, int dx, int dy)
 	update_position(game, new_x, new_y);
 }
 
+
