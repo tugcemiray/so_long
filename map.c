@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:06:33 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:06:36 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:58:16 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ int	read_map(t_game *game, char *file)
 	game->width = ft_strlen(map[0]);
 	return (1);
 }
+
 
