@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:06:49 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:06:51 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:56:32 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	close_game(t_game *game)
 void	free_game(t_game *game)
 {
 	if (!game)
-		free(game);
+		return;
 	if (game->map)
 		free_map(game->map);
 	if (game->exit || game->wall || game->floor
@@ -46,6 +46,7 @@ void	free_game(t_game *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
+	free(game);
 }
 
 void	free_txt(t_game *game)
@@ -68,4 +69,3 @@ int	end(t_game *game)
 	ft_putstr_fd(END_GAME, 1);
 	exit(0);
 }
-
