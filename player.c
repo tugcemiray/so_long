@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:01:54 by tugcemiraya       #+#    #+#             */
-/*   Updated: 2025/04/09 22:38:23 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:44:39 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	move_player(t_game *game, int dx, int dy)
 	c = game->map[new_y][new_x];
 	if (c == '1')
 		return ;
-	if (c == 'C' && game->fish--)
+	if (c == 'C' && game->collectibles--)
 		game->map[new_y][new_x] = '0';
-	else if (c == 'E' && game->fish == 0)
+	else if (c == 'E' && game->collectibles == 0)
 		end(game);
 	update_position(game, new_x, new_y);
 }
