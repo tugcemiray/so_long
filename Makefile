@@ -9,7 +9,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iminilibx-linux -Ilibft -Iget_next_line
 
-MLX_FLAGS = -L minilibx-linux -lminilibx-linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 LIBFT = libft/libft.a
 
 all: $(NAME)
