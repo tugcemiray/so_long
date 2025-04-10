@@ -69,3 +69,4 @@ int	end(t_game *game)
 	ft_putstr_fd(END_GAME, 1);
 	exit(0);
 }
+
