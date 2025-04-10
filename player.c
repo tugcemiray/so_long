@@ -48,6 +48,8 @@ void	move_player(t_game *game, int dx, int dy)
 		return ;
 	if (c == 'C' && game->collectibles--)
 		game->map[new_y][new_x] = '0';
+	if (c == 'E' && game->collectibles)
+		write(1,"Eat all fishes\n",16);
 	else if (c == 'E' && game->collectibles == 0)
 		end(game);
 	update_position(game, new_x, new_y);
