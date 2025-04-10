@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:06:05 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:06:08 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 04:25:13 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WRN_FILE "Wrong file name\n"
 # define WRN_MAP "Map error\n"
 # define WRN_MAP_READ "Map couldn't read\n"
-# define WRN_MAP_CNT "Incorrect Map\n"
+# define WRN_MAP_CNT "Incorrect Map Contents\n"
 # define WRN_MAP_OPN "Map walls not correct\n"
 # define WRN_MAP_TRG "Map target not correct\n"
 # define END_GAME "Congratulations! Zeytin is happy!\n"
@@ -47,6 +47,7 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 	int		count;
+	int		exit_reached;
 	int		collectibles;
 	int		moves;
 }			t_game;
