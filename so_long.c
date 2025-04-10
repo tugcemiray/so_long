@@ -63,3 +63,4 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->win, key_hook, game);
 	mlx_loop(game->mlx);
 }
+
