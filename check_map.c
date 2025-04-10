@@ -95,3 +95,4 @@ void	map_control(t_game *game)
 	map_contents(game, -1, -1);
 	check_wall(game);
 }
+
