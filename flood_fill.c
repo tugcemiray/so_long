@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:06:57 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/09 23:06:58 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 04:45:01 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	player_position(t_game *game)
 		col = 1;
 		while (col < game->width - 1)
 		{
-			if (game->map[row][col] == 'P')
+			if (game->map[col][row] == 'P')
 			{
 				game->player_x = col;
 				game->player_y = row;
@@ -40,7 +40,7 @@ static char	**copy_map(t_game *game)
 	int		i;
 	char	**cpy;
 
-	cpy = malloc((game->height * sizeof(char *)) + 1);
+	cpy = malloc((game->height + 1 ) * sizeof(char *));
 	if (!cpy)
 		err_msg(WRN_MEM);
 	i = 0;
@@ -62,13 +62,13 @@ static void	flood_fill(t_game *game, char **map, int row, int col)
 {
 	if (row < 0 || col < 0 || row >= game -> height || col >= game -> width)
 		return ;
-	else if (map[row][col] == '1' || map[row][col] == 'F')
+	else if (map[col][row] == '1' || map[col][row] == 'F')
 		return ;
-	else if (map[row][col] == 'C')
+	else if (map[col][row] == 'C')
 		game -> count++;
-	else if (map[row][col] == 'E')
-		game -> exit_count = 1;
-	map[row][col] = 'F';
+	else if (map[col][row] == 'E')
+		game -> exit_reached = 1;
+	map[col][row] = 'F';
 	flood_fill(game, map, row - 1, col);
 	flood_fill(game, map, row + 1, col);
 	flood_fill(game, map, row, col - 1);
@@ -80,14 +80,14 @@ void	flood_fill_controller(t_game *game)
 	char	**copy;
 
 	copy = copy_map(game);
-	if (copy)
+	if (!copy)
 	{
 		free_game(game);
 		err_msg(WRN_MEM);
 	}
 	player_position(game);
 	flood_fill(game, copy, game->player_x, game->player_y);
-	if (game->exit_count != 0 || game->count != game->collectibles)
+	if (game->exit_count != 1 || game->collectibles != game->count)
 	{
 		free_map(copy);
 		free_map(game->map);
