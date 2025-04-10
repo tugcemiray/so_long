@@ -6,7 +6,7 @@
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:06:57 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/10 04:45:01 by tukaraca         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:00:52 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	player_position(t_game *game)
 		col = 1;
 		while (col < game->width - 1)
 		{
-			if (game->map[col][row] == 'P')
+			if (game->map[row][col] == 'P')
 			{
 				game->player_x = col;
 				game->player_y = row;
@@ -62,13 +62,13 @@ static void	flood_fill(t_game *game, char **map, int row, int col)
 {
 	if (row < 0 || col < 0 || row >= game -> height || col >= game -> width)
 		return ;
-	else if (map[col][row] == '1' || map[col][row] == 'F')
+	else if (map[row][col] == '1' || map[row][col] == 'F')
 		return ;
-	else if (map[col][row] == 'C')
+	else if (map[row][col] == 'C')
 		game -> count++;
-	else if (map[col][row] == 'E')
+	else if (map[row][col] == 'E')
 		game -> exit_reached = 1;
-	map[col][row] = 'F';
+	map[row][col] = 'F';
 	flood_fill(game, map, row - 1, col);
 	flood_fill(game, map, row + 1, col);
 	flood_fill(game, map, row, col - 1);
@@ -79,6 +79,8 @@ void	flood_fill_controller(t_game *game)
 {
 	char	**copy;
 
+	game->count = 0;
+	game->exit_reached = 0;
 	copy = copy_map(game);
 	if (!copy)
 	{
@@ -86,8 +88,8 @@ void	flood_fill_controller(t_game *game)
 		err_msg(WRN_MEM);
 	}
 	player_position(game);
-	flood_fill(game, copy, game->player_x, game->player_y);
-	if (game->exit_count != 1 || game->collectibles != game->count)
+	flood_fill(game, copy, game->player_y, game->player_x);
+	if (game->exit_reached != 1 || game->collectibles != game->count)
 	{
 		free_map(copy);
 		free_map(game->map);
